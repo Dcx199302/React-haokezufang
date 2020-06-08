@@ -1,26 +1,27 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+// 1 引入 antd 组件
+import { Button } from 'antd-mobile';
+import store from './store';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = store.getState();
+        console.log(this.state.inputValue);
+    }
+    render() {
+        return (
+            <div>
+                <div style={{ height: '100px' }}></div>
+                <br />
+                {/* 2 使用 antd 组件 */}
+                <p>{this.state.inputValue}</p>
+                <Button>按钮</Button>
+                <Button icon="check-circle-o" inline size="small" style={{ marginRight: '4px' }}>
+                    with icon and inline
+                </Button>
+            </div>
+        );
+    }
 }
-
 export default App;
