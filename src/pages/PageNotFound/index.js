@@ -1,13 +1,15 @@
-// 我的
+// 404页面
+
 import React, { Component } from 'react';
-class My extends Component {
+
+class PageNotFound extends Component {
     constructor(props) {
         super(props);
         this.state = {};
     }
     render() {
-        return <p>My********</p>;
+        return <p>404---</p>;
     }
 }
 
-export default My;
+export default PageNotFound;

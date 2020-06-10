@@ -1,20 +1,24 @@
 // 城市选择
 import React, { Component } from 'react';
-import { Navbar } from 'antd-mobile';
+import { NavBar, Icon } from 'antd-mobile';
 
-class CitySlect extends Component {
+class CitySelect extends Component {
     state = {};
 
-    componentDidMount() {
-        axios.get().then(res => {
-            console.log(res);
-        });
-    }
+    componentDidMount() {}
     render() {
         return (
             <div>
-                <Navbar></Navbar>
+                <NavBar
+                    mode="light"
+                    icon={<Icon type="left" />}
+                    onLeftClick={() => console.log('onLeftClick', this.props)}
+                >
+                    城市选择
+                </NavBar>
             </div>
         );
     }
 }
+
+export default CitySelect;

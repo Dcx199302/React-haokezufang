@@ -1,1 +1,11 @@
 // 全局scss
+// 引入样式初始化文件
+@import './reset.scss';
+// 把变量的样式文件引入到App.scss
+@import './variable.scss';
+// 导入 iconfont 样式
+@import '../assets/fonts/iconfont.css';
+
+body {
+    color: var(--color-font);
+}

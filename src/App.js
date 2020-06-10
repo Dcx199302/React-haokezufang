@@ -1,27 +1,42 @@
 import React from 'react';
-// 1 引入 antd 组件
-import { Button } from 'antd-mobile';
-import store from './store';
+import './style/App.scss';
+// import store from './store';
+
+// 引入路由react-router-dom
+import { HashRouter, Route, Switch, Redirect } from 'react-router-dom';
+
+// 页面
+import Home from './pages/Home';
+import CitySelect from './pages/CitySelect';
+import MapFound from './pages/MapFound';
+import PageNotFound from './pages/PageNotFound';
+
+// import AntdmTabBar from './demo/AntdmTabBar';
 
 class App extends React.Component {
     constructor(props) {
         super(props);
-        this.state = store.getState();
-        console.log(this.state.inputValue);
+        this.state = {};
+        // this.state = store.getState();
+        // console.log(this.state.inputValue);
     }
     render() {
         return (
             <div>
-                <div style={{ height: '100px' }}></div>
-                <br />
-                {/* 2 使用 antd 组件 */}
-                <p>{this.state.inputValue}</p>
-                <Button>按钮</Button>
-                <Button icon="check-circle-o" inline size="small" style={{ marginRight: '4px' }}>
-                    with icon and inline
-                </Button>
+                <HashRouter>
+                    <Switch>
+                        <Route exact path="/">
+                            <Redirect to="/home"></Redirect>
+                        </Route>
+                        <Route path="/home" component={Home}></Route>
+                        <Route path="/cityselect" component={CitySelect}></Route>
+                        <Route path="/mapfound" component={MapFound}></Route>
+                        <Route exact component={PageNotFound}></Route>
+                    </Switch>
+                </HashRouter>
             </div>
         );
     }
 }
+
 export default App;
