@@ -1,0 +1,48 @@
+/*
+  自己封装一些常用的 SCSS 功能 
+*/
+
+/* 
+  1. SCSS 自定义函数
+    定义：
+      @function 函数名 (形参) { }
+        @return
+    调用：
+      函数名(实参);
+ */
+// SCSS 变量 - 定义设计稿宽度
+$deviceWidth: 375;
+
+// 定义函数
+@function vw($px) {
+  // 返回 计算后的结果
+  @return $px / $deviceWidth * 100vw;
+}
+
+// 调用函数
+// .box01 {
+//   width: vw(100);
+//   height: vw(100);
+//   background-color: pink;
+// }
+
+/* 
+  2. SCSS 混入 - 可以封装多行代码
+    定义：
+      @mixin 混入名(){  }
+    调用：
+      @include 混入名();
+*/
+@mixin ell($line: 2) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: $line;
+  -webkit-box-orient: vertical;
+}
+
+// .box03 {
+//   background-color: pink;
+//   // 导入混入类
+//   @include ell(3);
+// }

@@ -1,0 +1,67 @@
+.map {
+    height: calc(100vh - 45px);
+    .map_container {
+        height: 100%;
+        background-color: palevioletred;
+    }
+    // 全局样式
+    :global {
+        // 地图的圆圈
+        .map_circle {
+            border-radius: 50%;
+            width: 70px;
+            height: 70px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background-color: rgba(12, 181, 106, 0.9);
+            color: #fff;
+            border: 2px solid currentColor;
+        }
+        // 地图矩形房源展示
+        .map_rect {
+            background-color: rgba(12, 181, 106, 0.9);
+            border-radius: 3px;
+            color: #fff;
+            padding: 5px;
+        }
+    }
+}
+
+.house_list {
+    height: 50vh;
+    position: fixed;
+    z-index: 10;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #fff;
+    // CSS3 过渡
+    transition: all 0.4s;
+    // 一开始把房源列表移动到屏幕外(隐藏)
+    transform: translateY(50vh);
+    // 显示底部房源列表
+    &.show {
+        transform: translateY(0);
+    }
+    .house_list_head {
+        height: 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 10px;
+        background-color: #ddd;
+        .house_list_head_title {
+        }
+
+        .house_list_head_more {
+        }
+    }
+
+    .house_list_body {
+        padding: 0 10px;
+        height: calc(50vh - 40px);
+        overflow: auto;
+    }
+}

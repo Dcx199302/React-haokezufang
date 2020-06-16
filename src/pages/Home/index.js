@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 // 路由 Link未使用注意
 import { Route, Redirect } from 'react-router-dom';
 // ant-UI ：https://mobile.ant.design/components/tab-bar-cn/#components-tab-bar-demo-basic
+// 按需导入 TabBar 组件
 import { TabBar } from 'antd-mobile';
 
 // 页面组件的引入
@@ -14,19 +15,17 @@ class Home extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            selectedTab: 'redTab',
-            hidden: false,
-            fullScreen: false,
+            // hidden: false,
         };
     }
     // 切换内容
-    renderContent(pageText) {
-        return (
-            <div>
-                <h1>{pageText}</h1>
-            </div>
-        );
-    }
+    // renderContent(pageText) {
+    //     return (
+    //         <div>
+    //             <h1>{pageText}</h1>
+    //         </div>
+    //     );
+    // }
     render() {
         return (
             <div>
@@ -35,32 +34,25 @@ class Home extends Component {
                 </Route>
 
                 <div
-                    style={
-                        this.state.fullScreen
-                            ? { position: 'fixed', height: '100%', width: '100%', top: 0 }
-                            : { height: 667 }
-                    }
+                    style={{ position: 'fixed', height: '100%', width: '100%', top: 0 }}
+                    // 这里的高度需要重新渲染
                 >
                     {/* TabBer的可设置   https://mobile.ant.design/components/tab-bar-cn/#components-tab-bar-demo-basic  */}
                     <TabBar
                         unselectedTintColor="#949494"
                         tintColor="#33A3F4"
                         barTintColor="white"
-                        hidden={this.state.hidden}
+                        // hidden={this.state.hidden}
                     >
                         <TabBar.Item
                             title="首页"
                             key="首页"
-                            icon={<i></i>}
-                            selectedIcon={<i></i>}
-                            selected={this.state.selectedTab === '/home/index'}
+                            icon={<i className="iconfont icon-ind" />}
+                            selectedIcon={<i className="iconfont icon-ind" />}
+                            // selected={this.state.selectedTab === '/home/index'}
+                            selected={this.props.location.pathname === '/home/index'}
                             onPress={() => {
                                 this.props.history.push('/home/index');
-                                this.setState((state, props) => {
-                                    return {
-                                        selectedTab: '/home/index',
-                                    };
-                                });
                             }}
                         >
                             <Route path="/home/index" component={Index}></Route>
@@ -68,16 +60,11 @@ class Home extends Component {
                         <TabBar.Item
                             title="找房"
                             key="找房"
-                            icon={<i></i>}
-                            selectedIcon={<i></i>}
-                            selected={this.state.selectedTab === '/home/found'}
+                            icon={<i className="iconfont icon-findHouse" />}
+                            selectedIcon={<i className="iconfont icon-findHouse" />}
+                            selected={this.props.location.pathname === '/home/found'}
                             onPress={() => {
                                 this.props.history.push('/home/found');
-                                this.setState((state, props) => {
-                                    return {
-                                        selectedTab: '/home/found',
-                                    };
-                                });
                             }}
                         >
                             <Route path="/home/found" component={Found}></Route>
@@ -85,17 +72,11 @@ class Home extends Component {
                         <TabBar.Item
                             title="我的"
                             key="我的"
-                            icon={<i></i>}
-                            selectedIcon={<i></i>}
-                            selected={this.state.selectedTab === '/home/my'}
+                            icon={<i className="iconfont icon-my" />}
+                            selectedIcon={<i className="iconfont icon-my" />}
+                            selected={this.props.location.pathname === '/home/my'}
                             onPress={() => {
                                 this.props.history.push('/home/my');
-                                // 这里有多余的代码
-                                this.setState((state, props) => {
-                                    return {
-                                        selectedTab: '/home/my',
-                                    };
-                                });
                             }}
                         >
                             <Route path="/home/my" component={My}></Route>
